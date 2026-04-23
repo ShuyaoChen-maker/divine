@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 主色系 */
+  --primary: #2D1B4E;
+  --primary-light: #4A3460;
+  --primary-dark: #1A1128;
+  --accent: #8B7AA0;
+  --accent-hover: #C4A7D7;
+  
+  /* 背景色系 */
+  --background: #0F0A1A;
+  --background-elevated: #1A1128;
+  --background-hover: #251A38;
+  
+  /* 文字色系 */
+  --text-primary: #E8E0F0;
+  --text-secondary: #A99BC0;
+  --text-muted: #6B5B80;
+  
+  /* 点缀色 */
+  --gold: #D4AF37;
+  --starlight: #E6D5F2;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-elevated);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* 玻璃态效果 */
+.glass {
+  background: rgba(26, 17, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 122, 160, 0.2);
+}
+
+/* 卡片悬停效果 */
+.fortune-card {
+  transition: all 0.3s ease;
+}
+
+.fortune-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(196, 167, 215, 0.1);
+}
+
+/* 输入框样式 */
+.input-fortune {
+  background: var(--background-elevated);
+  border: 1px solid var(--primary-light);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.input-fortune:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139, 122, 160, 0.2);
+}
+
+/* 按钮样式 */
+.btn-fortune {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-fortune:hover {
+  background: linear-gradient(135deg, var(--accent), var(--primary-light));
+  transform: translateY(-2px);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 禁用文本选择 */
+.no-select {
+  user-select: none;
+}
