@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, Tarot, Moon, Sun, BookOpen, Zodiac } from 'lucide-react';
+import { Star, Moon, Sun, BookOpen, Card, Compass } from 'lucide-react';
 import PageContainer from '../components/layout/PageContainer';
 
 const HomePage: React.FC = () => {
@@ -8,7 +7,7 @@ const HomePage: React.FC = () => {
     {
       title: '塔罗占卜',
       description: '通过卡牌探索内心，获取生活指引',
-      icon: <Tarot className="w-8 h-8 text-accent" />,
+      icon: <Card className="w-8 h-8 text-accent" />,
       path: '/tarot',
     },
     {
@@ -26,7 +25,7 @@ const HomePage: React.FC = () => {
     {
       title: '星座分析',
       description: '探索星座奥秘，了解性格与命运',
-      icon: <Zodiac className="w-8 h-8 text-accent" />,
+      icon: <Compass className="w-8 h-8 text-accent" />,
       path: '/constellation',
     },
     {

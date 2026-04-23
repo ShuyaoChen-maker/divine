@@ -6,9 +6,284 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>玄默 - 命理玄学工具平台</title>
     <meta name="description" content="提供塔罗牌占卜、六爻起卦、星盘排盘、星座分析、八字排盘等玄学测算服务" />
+    <style>
+      /* 基础样式 */
+      :root {
+        --background: #1a1a2e;
+        --background-elevated: #16213e;
+        --background-hover: #0f3460;
+        --primary: #9d4edd;
+        --primary-light: rgba(157, 78, 221, 0.2);
+        --accent: #e94560;
+        --accent-hover: #c73651;
+        --text-primary: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.8);
+        --text-muted: rgba(255, 255, 255, 0.6);
+        --border: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: var(--background);
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+
+      /* 布局 */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* 头部 */
+      header {
+        background-color: var(--background-elevated);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* 英雄区域 */
+      .hero {
+        padding: 4rem 0;
+        text-align: center;
+        background: linear-gradient(135deg, var(--background-elevated) 0%, var(--background) 100%);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+      }
+
+      /* 功能卡片 */
+      .features {
+        padding: 4rem 0;
+      }
+
+      .features h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        color: var(--text-primary);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background-color: var(--background-elevated);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--border);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .feature-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .feature-card p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: var(--accent);
+      }
+
+      /* 页脚 */
+      footer {
+        background-color: var(--background-elevated);
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        margin-top: 4rem;
+      }
+
+      footer p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- 头部 -->
+    <header>
+      <div class="container">
+        <nav>
+          <a href="/" class="logo">玄默</a>
+          <div class="nav-links">
+            <a href="/tarot">塔罗占卜</a>
+            <a href="/liuyao">六爻起卦</a>
+            <a href="/astrology">星盘排盘</a>
+            <a href="/bazi">八字排盘</a>
+            <a href="/constellation">星座分析</a>
+            <a href="/about">关于我们</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+      <div class="container">
+        <h1>玄默 - 命理玄学工具平台</h1>
+        <p>探索命运的奥秘，开启智慧的大门</p>
+        <a href="/tarot" class="btn">开始测算</a>
+      </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="features">
+      <div class="container">
+        <h2>我们的服务</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>塔罗占卜</h3>
+            <p>通过塔罗牌的象征意义，为您提供人生指引和决策参考。</p>
+            <a href="/tarot" class="btn">开始占卜</a>
+          </div>
+          <div class="feature-card">
+            <h3>六爻起卦</h3>
+            <p>运用传统周易六爻预测，解读事物发展趋势和吉凶祸福。</p>
+            <a href="/liuyao" class="btn">开始起卦</a>
+          </div>
+          <div class="feature-card">
+            <h3>星盘排盘</h3>
+            <p>根据出生时间和地点，绘制个人星盘，分析性格和命运。</p>
+            <a href="/astrology" class="btn">开始排盘</a>
+          </div>
+          <div class="feature-card">
+            <h3>八字排盘</h3>
+            <p>基于传统八字命理学，分析个人命理格局和运势走向。</p>
+            <a href="/bazi" class="btn">开始排盘</a>
+          </div>
+          <div class="feature-card">
+            <h3>星座分析</h3>
+            <p>探索星座的奥秘，了解个人性格特点和运势预测。</p>
+            <a href="/constellation" class="btn">开始分析</a>
+          </div>
+          <div class="feature-card">
+            <h3>关于我们</h3>
+            <p>了解玄默平台的理念和团队，以及我们的服务宗旨。</p>
+            <a href="/about" class="btn">了解更多</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 玄默 - 命理玄学工具平台. 保留所有权利.</p>
+        <p>本平台提供的服务仅供参考，不构成任何专业建议。</p>
+      </div>
+    </footer>
+
+    <script>
+      // 简单的页面导航
+      document.addEventListener('DOMContentLoaded', function() {
+        // 模拟页面导航
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+          link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+              e.preventDefault();
+              // 显示加载消息
+              alert('正在跳转到 ' + href + '，请稍候...');
+              // 实际项目中这里会进行页面导航
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

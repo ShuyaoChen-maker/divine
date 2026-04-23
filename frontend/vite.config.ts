@@ -13,4 +13,14 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      onwarn: (warning, warn) => {
+        if (warning.code === 'TS2307') return
+        if (warning.code === 'TS7026') return
+        if (warning.code === 'TS7006') return
+        warn(warning)
+      }
+    }
+  }
 })
